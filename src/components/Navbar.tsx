@@ -1,0 +1,82 @@
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import opsfuxionLogo from "@/assets/opsfuxion-logo.jpg";
+
+const Navbar = () => {
+  const location = useLocation();
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Apply", path: "/apply" },
+  ];
+
+  return (
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50"
+    >
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="relative w-12 h-12 rounded-lg overflow-hidden neon-border">
+            <img
+              src={opsfuxionLogo}
+              alt="OpsFuxion Logo"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+          <div className="hidden sm:block">
+            <span className="font-orbitron font-bold text-lg tracking-wider">
+              Ops<span className="text-primary">Fu</span>
+              <span className="gold-text">X</span>
+              <span className="text-primary">ion</span>
+            </span>
+            <p className="text-[10px] text-muted-foreground tracking-widest uppercase">
+              Orchestrate Intelligence
+            </p>
+          </div>
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-6">
+          <ul className="hidden md:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`relative font-medium text-sm tracking-wide transition-colors duration-300 ${
+                    location.pathname === link.path
+                      ? "neon-text"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.name}
+                  {location.pathname === link.path && (
+                    <motion.div
+                      layoutId="navIndicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      style={{ boxShadow: "0 0 10px hsl(var(--neon-blue))" }}
+                    />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA Button */}
+          <Link
+            to="/apply"
+            className="btn-neon text-sm py-2 px-4 md:py-3 md:px-6 font-orbitron"
+          >
+            Apply Now
+          </Link>
+        </div>
+      </div>
+    </motion.nav>
+  );
+};
+
+export default Navbar;
