@@ -3,70 +3,7 @@ import { Link } from "react-router-dom";
 import { Clock, ArrowRight, ExternalLink, TrendingUp, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
-// Blog posts data - easily add new posts here
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Rise of AI-Assisted Development: What It Means for Your Team",
-    excerpt: "Explore how AI code assistants are transforming software development workflows and how teams can leverage these tools for maximum productivity without sacrificing code quality.",
-    category: "AI & Development",
-    date: "December 28, 2024",
-    readTime: "8 min read",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Kubernetes Best Practices for Production Workloads in 2025",
-    excerpt: "A comprehensive guide to running reliable, scalable Kubernetes clusters. From resource management to security hardening, learn the patterns that keep production systems running smoothly.",
-    category: "DevOps",
-    date: "December 25, 2024",
-    readTime: "12 min read",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Zero Trust Security: Implementing Modern Authentication Patterns",
-    excerpt: "Why perimeter-based security is dead and how to implement zero trust architecture in your applications. Includes practical examples with OAuth 2.0 and JWT.",
-    category: "Security",
-    date: "December 20, 2024",
-    readTime: "10 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Serverless at Scale: Lessons from Processing 1B Requests/Day",
-    excerpt: "Real-world insights from scaling serverless functions to handle massive traffic. Learn about cold starts, cost optimization, and when serverless makes sense.",
-    category: "Cloud",
-    date: "December 15, 2024",
-    readTime: "15 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    title: "The Complete Guide to Database Migrations Without Downtime",
-    excerpt: "Step-by-step strategies for migrating databases in production without affecting users. Covers PostgreSQL, MongoDB, and distributed database systems.",
-    category: "Database",
-    date: "December 10, 2024",
-    readTime: "14 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Building Resilient Microservices: Circuit Breakers and Beyond",
-    excerpt: "Learn how to design microservices that gracefully handle failures. Explore circuit breakers, retries, timeouts, and chaos engineering practices.",
-    category: "Architecture",
-    date: "December 5, 2024",
-    readTime: "11 min read",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-  },
-];
-
+import { blogPosts } from "@/data/blogPosts";
 // Side links - external resources
 const sideLinks = [
   { title: "AWS Architecture Blog", url: "https://aws.amazon.com/blogs/architecture/" },
@@ -159,44 +96,48 @@ const Blog = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="glass-card rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground">
-                          Featured
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="block glass-card rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300"
+                    >
+                      <div className="relative h-48 overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground">
+                            Featured
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
+                          <span className="text-primary">{post.category}</span>
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {post.date}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {post.readTime}
+                          </span>
+                        </div>
+                        <h3 className="font-orbitron font-bold text-lg mb-3 group-hover:neon-text transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                          {post.excerpt}
+                        </p>
+                        <span className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                          Read More
+                          <ArrowRight className="w-4 h-4" />
                         </span>
                       </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
-                        <span className="text-primary">{post.category}</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {post.date}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <h3 className="font-orbitron font-bold text-lg mb-3 group-hover:neon-text transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
-                        {post.excerpt}
-                      </p>
-                      <span className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                        Read More
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
+                    </Link>
                   </motion.article>
                 ))}
               </div>
@@ -213,38 +154,42 @@ const Blog = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="glass-card rounded-xl p-6 flex flex-col md:flex-row gap-6 group hover:border-primary/50 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="md:w-48 h-32 md:h-auto rounded-lg overflow-hidden flex-shrink-0">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground mb-2">
-                        <span className="text-primary">{post.category}</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {post.date}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="block glass-card rounded-xl p-6 md:flex gap-6 group hover:border-primary/50 transition-all duration-300"
+                    >
+                      <div className="md:w-48 h-32 md:h-auto rounded-lg overflow-hidden flex-shrink-0 mb-4 md:mb-0">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mb-2">
+                          <span className="text-primary">{post.category}</span>
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {post.date}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {post.readTime}
+                          </span>
+                        </div>
+                        <h3 className="font-orbitron font-bold text-lg mb-2 group-hover:neon-text transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                          {post.excerpt}
+                        </p>
+                        <span className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                          Read More
+                          <ArrowRight className="w-4 h-4" />
                         </span>
                       </div>
-                      <h3 className="font-orbitron font-bold text-lg mb-2 group-hover:neon-text transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-                        {post.excerpt}
-                      </p>
-                      <span className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                        Read More
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
+                    </Link>
                   </motion.article>
                 ))}
               </div>

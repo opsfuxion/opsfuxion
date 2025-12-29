@@ -3,76 +3,7 @@ import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight, Calendar, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
-// Portfolio projects data - easily add new projects here
-const projects = [
-  {
-    id: 1,
-    title: "CloudScale Analytics Platform",
-    client: "FinTech Solutions Inc.",
-    description: "Built a real-time analytics dashboard handling 10M+ daily events with sub-second latency. Implemented auto-scaling infrastructure on AWS with Kubernetes orchestration.",
-    technologies: ["React", "Node.js", "AWS", "Kubernetes", "PostgreSQL"],
-    year: "2024",
-    teamSize: "5 engineers",
-    link: "https://example.com/cloudscale",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "E-Commerce Mobile Platform",
-    client: "RetailMax Global",
-    description: "Developed a cross-platform mobile commerce solution serving 500K+ users across 12 countries. Integrated payment gateways, inventory management, and real-time order tracking.",
-    technologies: ["React Native", "Firebase", "Stripe", "Node.js"],
-    year: "2024",
-    teamSize: "4 engineers",
-    link: "https://example.com/retailmax",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Healthcare Data Pipeline",
-    client: "MedCore Systems",
-    description: "Architected HIPAA-compliant data infrastructure processing 50TB+ of medical records. Implemented end-to-end encryption, audit logging, and disaster recovery protocols.",
-    technologies: ["Python", "Apache Kafka", "Azure", "MongoDB", "Docker"],
-    year: "2023",
-    teamSize: "6 engineers",
-    link: "https://example.com/medcore",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    title: "AI-Powered CRM Suite",
-    client: "SalesForce Pro",
-    description: "Created an intelligent CRM with predictive lead scoring, automated follow-ups, and sentiment analysis. Reduced sales cycle by 40% through ML-driven insights.",
-    technologies: ["Next.js", "Python", "TensorFlow", "PostgreSQL", "Redis"],
-    year: "2023",
-    teamSize: "5 engineers",
-    link: "https://example.com/crmsuite",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    title: "IoT Fleet Management",
-    client: "TransLogix Corp",
-    description: "Deployed IoT infrastructure tracking 10,000+ vehicles in real-time. Built predictive maintenance algorithms reducing downtime by 60% and fuel costs by 25%.",
-    technologies: ["Go", "MQTT", "TimescaleDB", "Grafana", "AWS IoT"],
-    year: "2023",
-    teamSize: "4 engineers",
-    link: "https://example.com/translogix",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    title: "DevOps Automation Suite",
-    client: "TechOps Innovations",
-    description: "Implemented comprehensive CI/CD pipelines reducing deployment time from hours to minutes. Achieved 99.99% uptime with zero-downtime deployments.",
-    technologies: ["Terraform", "Jenkins", "Docker", "Ansible", "Prometheus"],
-    year: "2024",
-    teamSize: "3 engineers",
-    link: "https://example.com/techops",
-    image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&h=400&fit=crop",
-  },
-];
-
+import { projects } from "@/data/portfolioProjects";
 const Portfolio = () => {
   return (
     <div className="min-h-screen bg-background circuit-bg">
@@ -123,68 +54,60 @@ const Portfolio = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300"
               >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="text-xs text-primary font-medium">{project.client}</span>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {project.year}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="w-3 h-3" />
-                        {project.teamSize}
-                      </span>
+                <Link
+                  to={`/portfolio/${project.slug}`}
+                  className="block glass-card rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                      <span className="text-xs text-primary font-medium">{project.client}</span>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {project.year}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Users className="w-3 h-3" />
+                          {project.teamSize}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="font-orbitron font-bold text-lg mb-3 group-hover:neon-text transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
+                  <div className="p-6">
+                    <h3 className="font-orbitron font-bold text-lg mb-3 group-hover:neon-text transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                      View Details
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
-
-                  {/* Link */}
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                  >
-                    View Project
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
+                </Link>
               </motion.article>
             ))}
           </div>
