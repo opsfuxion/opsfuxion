@@ -3,8 +3,8 @@
   <h1>Orchestrate Intelligence. Deliver with Precision.</h1>
   <p align="center">
     <a href="https://opsfuxiontech.com"><b>Website</b></a> •
-    <a href="https://linkedin.com/company/opsfuxiontech"><b>LinkedIn</b></a> •
-    <a href="mailto:hello@opsfuxiontech.com"><b>Contact</b></a> •
+    <a href="https://www.linkedin.com/company/109449901/admin/dashboard/"><b>LinkedIn</b></a> •
+    <a href="mailto:info@opsfuxiontech.com"><b>Contact</b></a> •
     <a href="https://opsfuxiontech.com/blog"><b>Blog</b></a>
   </p>
   
