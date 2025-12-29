@@ -85,10 +85,10 @@ const ThankYou = () => {
                   ))}
                 </ul>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <button className="btn-gold py-3 px-6 text-sm font-orbitron flex items-center gap-2">
+                  <Link to="/web-audit" className="btn-gold py-3 px-6 text-sm font-orbitron flex items-center gap-2">
                     Get Instant Audit — $297
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                   <div className="text-sm text-muted-foreground">
                     <span className="line-through">$597</span>
                     <span className="gold-text ml-2 font-medium">50% OFF</span>
