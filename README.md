@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+<div align="center">
+  <img src="https://your-domain.com/path-to-logo.png" width="150" alt="OpsFuxionTech Logo" />
+  <h1>Orchestrate Intelligence. Deliver with Precision.</h1>
+  <p align="center">
+    <a href="https://opsfuxiontech.com"><b>Website</b></a> •
+    <a href="https://linkedin.com/company/opsfuxiontech"><b>LinkedIn</b></a> •
+    <a href="mailto:hello@opsfuxiontech.com"><b>Contact</b></a> •
+    <a href="https://opsfuxiontech.com/blog"><b>Blog</b></a>
+  </p>
+  
+  <img src="https://img.shields.io/badge/DevOps-Engineering-00E5FF?style=for-the-badge&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/SRE-Reliability-D4AF37?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI-Software_Engineering-white?style=for-the-badge&logo=openai&logoColor=black" />
+</div>
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+### ⚡ The OpsFuxionTech Vision
+We are a high-performance technology consultancy bridging the gap between **Ambitious Innovation** and **Operational Excellence**. We specialize in architecting resilient, self-healing systems and deploying AI-driven full-stack applications with surgical precision.
 
-## How can I edit this code?
+### 🛠️ Core Capabilities
+- **DevOps & Cloud Orchestration:** Automated CI/CD, IaC (Terraform/Ansible), and Kubernetes management.
+- **Site Reliability Engineering (SRE):** Zero-downtime migrations, proactive monitoring, and incident remediation.
+- **AI-Assisted Software Engineering:** Rapid prototyping and deployment of scalable web/mobile platforms.
+- **Technical Stewardship:** PRD authoring, architectural blueprints, and full-lifecycle project management.
 
-There are several ways of editing your application.
+### 🚀 Featured Internal Projects
+| Project | Description | Stack |
+| :--- | :--- | :--- |
+| **Sentinel SRE** | Autonomous AI agent for production root-cause analysis. | Python, FastAPI, Claude 3.5 |
+| **FuxionFlow** | Proprietary CI/CD blueprint for sub-2s deployments. | GitHub Actions, Docker, K8s |
+| **PrecisionUI** | High-conversion React component library for tech funnels. | React, Tailwind, Framer Motion |
 
-**Use Lovable**
+### 📊 Engineering Metrics
+<p align="left">
+  <img src="https://github-readme-stats.vercel.app/api?username=OpsFuxionTech&show_icons=true&theme=tokyonight&hide_border=true&bg_color=121212&title_color=00E5FF&text_color=ffffff" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=OpsFuxionTech&layout=compact&theme=tokyonight&hide_border=true&bg_color=121212&title_color=D4AF37&text_color=ffffff" height="150" />
+</p>
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 📫 Let's Orchestrate Something Great
+- 🔭 **Current Focus:** Autonomous SRE remediation agents.
+- 💬 **Ask us about:** Cloud scalability, AI integration, or reducing your MTTR.
+- ⚡ **Fun Fact:** Our internal build-to-deploy pipeline is faster than a high-end espresso machine.
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+<div align="center">
+  <sub>&copy; 2025 OpsFuxionX. All Rights Reserved. Engineered for Scale.</sub>
+</div>
