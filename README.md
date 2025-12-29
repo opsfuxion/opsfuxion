@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://your-domain.com/path-to-logo.png" width="150" alt="OpsFuxionTech Logo" />
+  <img src="https://github.com/opsfuxion/opsfuxion/blob/main/src/assets/opsfuxion-logo.jpg" width="150" alt="OpsFuxionTech Logo" />
   <h1>Orchestrate Intelligence. Deliver with Precision.</h1>
   <p align="center">
     <a href="https://opsfuxiontech.com"><b>Website</b></a> •
