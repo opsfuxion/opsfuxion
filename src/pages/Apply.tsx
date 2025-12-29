@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, ArrowLeft, User, Building2, DollarSign, Code, Target } from "lucide-react";
+import { ArrowRight, ArrowLeft, User, Building2, Briefcase, Target } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,12 +12,13 @@ interface FormData {
   fullName: string;
   email: string;
   company: string;
-  monthlyRevenue: string;
+  companyStage: string;
   techStack: string;
   needs: string[];
 }
 
-const REVENUE_THRESHOLD = 10000; // $10K monthly revenue threshold
+// Company stages that qualify for strategy session (established companies)
+const QUALIFIED_STAGES = ["growth", "scaleup", "enterprise"];
 
 const Apply = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Apply = () => {
     fullName: "",
     email: "",
     company: "",
-    monthlyRevenue: "",
+    companyStage: "",
     techStack: "",
     needs: [],
   });
@@ -50,9 +51,8 @@ const Apply = () => {
     if (step < totalSteps) {
       setStep(step + 1);
     } else {
-      // Final submission - check revenue qualification
-      const revenue = parseInt(formData.monthlyRevenue.replace(/[^0-9]/g, "")) || 0;
-      if (revenue >= REVENUE_THRESHOLD) {
+      // Final submission - check company stage qualification
+      if (QUALIFIED_STAGES.includes(formData.companyStage)) {
         navigate("/thank-you");
       } else {
         navigate("/resources");
@@ -71,7 +71,7 @@ const Apply = () => {
       case 2:
         return formData.company.trim().length > 0;
       case 3:
-        return formData.monthlyRevenue.length > 0;
+        return formData.companyStage.length > 0;
       case 4:
         return formData.needs.length > 0;
       default:
@@ -79,14 +79,39 @@ const Apply = () => {
     }
   };
 
-  const stepIcons = [User, Building2, DollarSign, Target];
+  const stepIcons = [User, Building2, Briefcase, Target];
 
-  const revenueOptions = [
-    { value: "0-5000", label: "Under $5,000" },
-    { value: "5000-10000", label: "$5,000 - $10,000" },
-    { value: "10000-50000", label: "$10,000 - $50,000" },
-    { value: "50000-100000", label: "$50,000 - $100,000" },
-    { value: "100000+", label: "$100,000+" },
+  const companyStageOptions = [
+    { 
+      value: "ideation", 
+      label: "Ideation / Pre-Seed", 
+      staffRange: "1-3 people",
+      description: "You're validating your idea, building an MVP, or seeking initial funding. Technical decisions at this stage shape your entire future."
+    },
+    { 
+      value: "earlystage", 
+      label: "Early-Stage Startup", 
+      staffRange: "4-15 people",
+      description: "You've launched your product and are acquiring early customers. You need to build fast while maintaining quality and reliability."
+    },
+    { 
+      value: "growth", 
+      label: "Growth-Stage Company", 
+      staffRange: "16-50 people",
+      description: "You're scaling rapidly, expanding your team, and need robust infrastructure to handle increasing demand and complexity."
+    },
+    { 
+      value: "scaleup", 
+      label: "Scale-Up / Series B+", 
+      staffRange: "51-200 people",
+      description: "You're a proven business scaling operations. Enterprise-grade reliability, security compliance, and performance optimization are critical."
+    },
+    { 
+      value: "enterprise", 
+      label: "Enterprise / Corporation", 
+      staffRange: "200+ people",
+      description: "You're an established organization requiring strategic technical partnerships, large-scale migrations, or digital transformation initiatives."
+    },
   ];
 
   const needsOptions = [
@@ -239,7 +264,7 @@ const Apply = () => {
                 </motion.div>
               )}
 
-              {/* Step 3: Revenue */}
+              {/* Step 3: Company Stage */}
               {step === 3 && (
                 <motion.div
                   key="step3"
@@ -250,32 +275,44 @@ const Apply = () => {
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-accent" />
+                      <Briefcase className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h2 className="font-orbitron font-bold">Monthly Revenue</h2>
-                      <p className="text-sm text-muted-foreground">Helps us tailor our solution</p>
+                      <h2 className="font-orbitron font-bold">Company Stage</h2>
+                      <p className="text-sm text-muted-foreground">Select your current growth phase</p>
                     </div>
                   </div>
 
                   <RadioGroup
-                    value={formData.monthlyRevenue}
-                    onValueChange={(value) => handleInputChange("monthlyRevenue", value)}
+                    value={formData.companyStage}
+                    onValueChange={(value) => handleInputChange("companyStage", value)}
                     className="space-y-3"
                   >
-                    {revenueOptions.map((option) => (
+                    {companyStageOptions.map((option) => (
                       <div
                         key={option.value}
-                        className={`flex items-center space-x-3 p-4 rounded-lg border transition-all cursor-pointer ${
-                          formData.monthlyRevenue === option.value
+                        className={`p-4 rounded-lg border transition-all cursor-pointer ${
+                          formData.companyStage === option.value
                             ? "border-primary bg-primary/10"
                             : "border-border bg-secondary/50 hover:border-primary/50"
                         }`}
                       >
-                        <RadioGroupItem value={option.value} id={option.value} />
-                        <Label htmlFor={option.value} className="cursor-pointer flex-1">
-                          {option.label}
-                        </Label>
+                        <div className="flex items-start space-x-3">
+                          <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <Label htmlFor={option.value} className="cursor-pointer font-medium text-foreground">
+                                {option.label}
+                              </Label>
+                              <span className="text-xs px-2 py-1 rounded-full bg-primary/20 text-primary font-medium">
+                                {option.staffRange}
+                              </span>
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                              {option.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </RadioGroup>
