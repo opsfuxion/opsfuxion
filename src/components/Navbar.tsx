@@ -19,17 +19,18 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50"
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Embossed Style */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-lg overflow-hidden neon-border">
+          <div className="relative w-12 h-12 rounded-lg overflow-hidden embossed-logo">
             <img
               src={opsfuxionLogo}
               alt="OpsFuxion Logo"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/30 pointer-events-none" />
           </div>
           <div className="hidden sm:block">
-            <span className="font-orbitron font-bold text-lg tracking-wider">
+            <span className="font-orbitron font-bold text-lg tracking-wider embossed-text">
               Ops<span className="text-primary">Fu</span>
               <span className="gold-text">X</span>
               <span className="text-primary">ion</span>

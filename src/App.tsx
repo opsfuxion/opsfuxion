@@ -8,6 +8,7 @@ import Apply from "./pages/Apply";
 import Services from "./pages/Services";
 import ThankYou from "./pages/ThankYou";
 import Resources from "./pages/Resources";
+import WebAudit from "./pages/WebAudit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/web-audit" element={<WebAudit />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

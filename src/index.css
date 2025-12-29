@@ -196,6 +196,25 @@
       radial-gradient(circle at 25% 25%, hsl(var(--neon-blue) / 0.03) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, hsl(var(--gold) / 0.02) 0%, transparent 50%);
   }
+
+  /* Embossed Logo Effect */
+  .embossed-logo {
+    @apply relative;
+    box-shadow: 
+      inset 2px 2px 4px hsl(0 0% 0% / 0.6),
+      inset -2px -2px 4px hsl(0 0% 100% / 0.1),
+      2px 2px 8px hsl(0 0% 0% / 0.5),
+      0 0 15px hsl(var(--neon-blue) / 0.3);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  /* Embossed Text Effect */
+  .embossed-text {
+    text-shadow: 
+      1px 1px 1px hsl(0 0% 0% / 0.5),
+      -1px -1px 1px hsl(0 0% 100% / 0.1),
+      0 0 10px hsl(var(--neon-blue) / 0.3);
+  }
 }
 
 @layer utilities {
