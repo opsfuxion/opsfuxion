@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo - Embossed Style */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-lg overflow-hidden embossed-logo">
+          <div className="relative w-16 h-16 rounded-lg overflow-hidden embossed-logo">
             <img
               src={opsfuxionLogo}
               alt="OpsFuxion Logo"
