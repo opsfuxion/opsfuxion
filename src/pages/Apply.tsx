@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft, User, Building2, Briefcase, Target } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import CountdownTimer from "@/components/CountdownTimer";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -404,6 +406,10 @@ const Apply = () => {
           </p>
         </motion.div>
       </div>
+
+      {/* Floating Widgets */}
+      <CountdownTimer />
+      <WhatsAppWidget />
     </div>
   );
 };

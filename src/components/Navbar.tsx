@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import opsfuxionLogo from "@/assets/opsfuxion-logo.jpg";
 
 const Navbar = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isApplyPage = location.pathname === "/apply";
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -69,15 +73,67 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* CTA Button */}
-          <Link
-            to="/apply"
-            className="btn-neon text-sm py-2 px-4 md:py-3 md:px-6 font-orbitron"
+          {/* CTA Button - Hidden on Apply page */}
+          {!isApplyPage && (
+            <Link
+              to="/apply"
+              className="hidden md:inline-block btn-neon text-sm py-2 px-4 md:py-3 md:px-6 font-orbitron"
+            >
+              Apply Now
+            </Link>
+          )}
+
+          {/* Mobile Hamburger Menu */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            aria-label="Toggle mobile menu"
           >
-            Apply Now
-          </Link>
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass-card border-t border-border/50"
+          >
+            <ul className="flex flex-col py-4">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-6 py-3 font-medium text-sm transition-colors ${
+                      location.pathname === link.path
+                        ? "neon-text bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              {!isApplyPage && (
+                <li className="px-4 pt-4">
+                  <Link
+                    to="/apply"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block btn-neon text-sm py-3 px-6 font-orbitron text-center"
+                  >
+                    Apply Now
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
