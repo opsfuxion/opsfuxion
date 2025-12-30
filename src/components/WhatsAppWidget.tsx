@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const WhatsAppWidget = () => {
-  const phoneNumber = "1234567890"; // Replace with actual number
+  const phoneNumber = "2348068590823";
   const message = "Hi OpsFuxion! I'm interested in your infrastructure services.";
 
   const handleClick = () => {

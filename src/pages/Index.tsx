@@ -92,11 +92,11 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-base md:text-lg text-muted-foreground/80 max-w-2xl mx-auto mb-8"
+            className="hero-description text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
           >
             We provide the technical stewardship needed to navigate complex cloud migrations, 
             scale mobile-first platforms, and maintain absolute data integrity. 
-            <span className="gold-text"> Where others see complexity, we see an opportunity for orchestration.</span>
+            <span className="gold-text font-medium"> Where others see complexity, we see an opportunity for orchestration.</span>
           </motion.p>
 
           {/* Benefits */}

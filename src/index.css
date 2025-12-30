@@ -197,15 +197,22 @@
       radial-gradient(circle at 75% 75%, hsl(var(--gold) / 0.02) 0%, transparent 50%);
   }
 
-  /* Embossed Logo Effect */
+  /* Embossed Logo Effect with Golden Stroke */
   .embossed-logo {
     @apply relative;
     box-shadow: 
-      inset 2px 2px 4px hsl(0 0% 0% / 0.6),
-      inset -2px -2px 4px hsl(0 0% 100% / 0.1),
-      2px 2px 8px hsl(0 0% 0% / 0.5),
-      0 0 15px hsl(var(--neon-blue) / 0.3);
-    border: 1px solid hsl(0 0% 100% / 0.1);
+      inset 3px 3px 6px hsl(0 0% 0% / 0.7),
+      inset -2px -2px 4px hsl(0 0% 100% / 0.15),
+      3px 3px 10px hsl(0 0% 0% / 0.6),
+      0 0 20px hsl(var(--gold) / 0.5),
+      0 0 40px hsl(var(--gold) / 0.3);
+    border: 2px solid hsl(var(--gold));
+  }
+
+  /* Hero Description Text Enhancement */
+  .hero-description {
+    @apply text-foreground/90;
+    text-shadow: 0 2px 10px hsl(0 0% 0% / 0.5);
   }
 
   /* Embossed Text Effect */
